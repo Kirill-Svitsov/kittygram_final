@@ -1,7 +1,7 @@
 version: '3'
 
 volumes:
-  pg_data1:
+  pg_data1_production:
   static:
   media:
 
@@ -10,29 +10,28 @@ services:
     image: postgres:13
     env_file: .env
     volumes:
-      - pg_data1:/var/lib/postgresql/data
+      - pg_data1_production:/var/lib/postgresql/data
+
   backend:
-    build: ./backend/
+    image: svitsov/kittygram_final_backend
     env_file: .env
     depends_on:
       - db
     volumes:
       - static:/backend_static
-      - media:/app/media
+      - media:/media
 
   frontend:
     env_file: .env
-    build: ./frontend/
+    image: svitsov/kittygram_final_frontend
     command: cp -r /app/build/. /frontend_static/
     volumes:
       - static:/frontend_static
   gateway:
-    build: ./nginx/
+    image: svitsov/kittygram_final_gateway
     env_file: .env
-    depends_on:
-      - backend
     volumes:
       - static:/static/
-      - media:/app/media/
+      - media:/media
     ports:
       - 9000:80
