@@ -23,9 +23,9 @@ services:
   frontend:
     env_file: .env
     build: ./frontend/
-    command: cp -r /app/build/. /frontend_static/
+    command: cp -r /app/build/. /static/
     volumes:
-      - static:/frontend_static
+      - static:/static
       - media:/media
   gateway:
     build: ./nginx/
