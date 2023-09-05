@@ -13,7 +13,7 @@ services:
       - pg_data1_production:/var/lib/postgresql/data
 
   backend:
-    image: svitsov/kittygram_final_backend
+    image: svitsov/kittygram_backend
     env_file: .env
     depends_on:
       - db
@@ -23,15 +23,18 @@ services:
 
   frontend:
     env_file: .env
-    image: svitsov/kittygram_final_frontend
+    image: svitsov/kittygram_frontend
     command: cp -r /app/build/. /frontend_static/
     volumes:
       - static:/frontend_static
   gateway:
-    image: svitsov/kittygram_final_gateway
+    image: svitsov/kittygram_gateway
     env_file: .env
     volumes:
-      - static:/static/
+      - static:/static
       - media:/media
     ports:
       - 9000:80
+    depends_on:
+      - backend
+      - frontend
