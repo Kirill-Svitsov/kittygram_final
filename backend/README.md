@@ -49,4 +49,4 @@ python3 manage.py migrate
 ```
 python3 manage.py runserver
 ```
-# Комментарий для коммита
+# Комментарий для коммита 2
