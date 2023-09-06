@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+USE_SQLITE = os.getenv('USE_SQLITE')
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'ssidasddcdgdf')
@@ -59,12 +61,12 @@ WSGI_APPLICATION = 'kittygram_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DB', 'django'),
-        'USER': os.getenv('POSTGRES_USER', 'django'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD', ''),
-        'HOST': os.getenv('DB_HOST', ''),
-        'PORT': os.getenv('DB_PORT', 5432)
+        'ENGINE': 'django.db.backends.postgresql' if USE_SQLITE is None else 'django.db.backends.sqlite3',
+        'NAME': os.getenv('POSTGRES_DB', 'django') if USE_SQLITE is None else 'sqlite_db',
+        'USER': os.getenv('POSTGRES_USER', 'django') if USE_SQLITE is None else '',
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', '') if USE_SQLITE is None else '',
+        'HOST': os.getenv('DB_HOST', '') if USE_SQLITE is None else '',
+        'PORT': os.getenv('DB_PORT', 5432) if USE_SQLITE is None else '',
     }
 }
 
@@ -86,9 +88,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
