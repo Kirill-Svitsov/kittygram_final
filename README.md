@@ -1,4 +1,6 @@
-![GitHub Actions Status](https://github.com/Kirill-Svitsov/kittygram_final/workflows/main/badge.svg)
+[![GitHub Actions Status](https://github.com/Kirill-Svitsov/kittygram_final/workflows/main/badge.svg)](https://github.com/Kirill-Svitsov/kittygram_final/actions)
+
+
 
 # Kittygram: Финальное задание
 
