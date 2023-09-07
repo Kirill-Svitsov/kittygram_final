@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 [![GitHub Actions Status](https://github.com/Kirill-Svitsov/kittygram_final/workflows/main/badge.svg)](https://github.com/Kirill-Svitsov/kittygram_final/actions)
 
 
+=======
+![GitHub Actions Status](https://github.com/Kirill-Svitsov/kittygram_final/actions/workflows/main.yml/badge.svg)
+>>>>>>> 46766b62d90f98cfdb36140cc63964a1acc1aa31
 
 # Kittygram: Финальное задание
 
